@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #############################################################################
 ###                                                                       ###
 ###   Antisense Project - 2018                                            ###
@@ -14,13 +15,25 @@ from deeptools import bamCoverage
 from deeptools import computeMatrix
 from deeptools import plotHeatmap
 import pysam
+import argparse
 
+
+
+parser = argparse.ArgumentParser(description='Generate Stranded HeatMap.')
+parser.add_argument('bamFile', help='Base bamFIle to be reported in the HeatMap')
+parser.add_argument('--cpu', dest='NumberCpus', default=8 , help='Number of Cpus to use')
+parser.add_argument('--zMax', dest='zMax', default="", help='The Maximum z value to plotHeatMap deeptools function')
+args = parser.parse_args()
 
 ###
 #General Input
-bamFile="/home/ruiluis/PycharmProjects/MTScripts/Sample.bam"
+bamFile=args.bamFile
 basenameNoExtension = os.path.splitext(os.path.basename(bamFile))[0]
-NumberCpus=4
+NumberCpus=args.NumberCpus
+if args.zMax != "":
+    zMax="--zMax " + args.zMax
+else:
+    zMax=""
 
 ######
 #DeepTools
@@ -30,7 +43,7 @@ NumberCpus=4
 
 #bamCoverage
 binSize=10
-blackListFileName="Blacklist_hg38.bed"
+blackListFileName=os.path.dirname(os.path.realpath(__file__)) +  "/Blacklist_hg38.bed"
 effectiveGenomeSize=2913022398
 normalizeUsing="BPM"
 
@@ -38,10 +51,10 @@ normalizeUsing="BPM"
 referencePoint="TSS"
 bpbefore=500
 bpafter=500
-AntisensePLUS = 'TSS2_Isoforms_PLUS.bed'
-AntisenseMINUS = 'TSS2_Isoforms_MINUS.bed'
-ProteinCodingMINUS = 'ProteinCodingIsoforms_MINUS.bed'
-ProteinCodingPLUS = 'ProteinCodingIsoforms_PLUS.bed'
+AntisensePLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS2_Isoforms_PLUS.bed'
+AntisenseMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS2_Isoforms_MINUS.bed'
+ProteinCodingMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_MINUS.bed'
+ProteinCodingPLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_PLUS.bed'
 
 #PlotHeatMap
 heatMapColor="Greys"
@@ -68,9 +81,9 @@ def produce_computeMatrix(Type,referencePoint,  bpbefore, bpafter, outFileBW, bi
 
 ###
 #plotHeatmap
-def produce_plotHeadmap(Type,basenameNoExtension,outFile_computeMatrix,heatMapColor):
+def produce_plotHeadmap(Type,basenameNoExtension,outFile_computeMatrix,heatMapColor,zMax=zMax):
     outFile_plotHeatmap = "HeatMap_"+basenameNoExtension+"_"+Type+"_.eps"
-    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor).split()
+    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps {}".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor,zMax).split()
     plotHeatmap.main(args_plotHeatMap)
 
 
@@ -112,14 +125,14 @@ if __name__ == '__main__':
     createBAMIndex(basenameNoExtension)
 
     #Create Forward and Reverse Bigwig files
-    outFileBW=[basenameNoExtension + "_Reverse_.bw",basenameNoExtension + "_Forward_.bw"]
+    Types=["Reverse","Forward"]
     outFileBW = []
-    for directionBamFile in [basenameNoExtension + "_Reverse",basenameNoExtension + "_Forward"]:
-        outFileBW.append(produce_bamCoverage(directionBamFile.split("_")[1],directionBamFile+".bam",basenameNoExtension, NumberCpus, binSize, blackListFileName,effectiveGenomeSize,normalizeUsing))
-
+    for enum,directionBamFile in enumerate([basenameNoExtension + "_Reverse",basenameNoExtension + "_Forward"]):
+        outFileBW.append(produce_bamCoverage(Types[enum],directionBamFile+".bam",basenameNoExtension, NumberCpus, binSize, blackListFileName,effectiveGenomeSize,normalizeUsing))
+    
     #ProteinCoding Forward
     for num,AnotationType in enumerate([ProteinCodingMINUS,ProteinCodingPLUS]):
-        outFile_computeMatrix = produce_computeMatrix(outFileBW[num].split("_")[1],referencePoint, bpbefore, bpafter, outFileBW[num], binSize,AnotationType)
+        outFile_computeMatrix = produce_computeMatrix(Types[num],referencePoint, bpbefore, bpafter, outFileBW[num], binSize,AnotationType)
 
     rbindMatrix("matrix"+"_Forward_.gz","matrix"+"_Reverse_.gz","Final_Matrix_ProteinCoding.gz")
     produce_plotHeadmap("ProteinCoding_FORWARD",basenameNoExtension, "Final_Matrix_ProteinCoding.gz", heatMapColor)
@@ -127,7 +140,7 @@ if __name__ == '__main__':
 
     #ProteinCoding Reverse
     for num,AnotationType in enumerate([ProteinCodingPLUS,ProteinCodingMINUS]):
-        outFile_computeMatrix = produce_computeMatrix(outFileBW[num].split("_")[1],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
+        outFile_computeMatrix = produce_computeMatrix(Types[num],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
 
     rbindMatrix("matrix"+"_Forward_.gz","matrix"+"_Reverse_.gz","Final_Matrix_ProteinCoding.gz")
     produce_plotHeadmap("ProteinCoding_REVERSE",basenameNoExtension, "Final_Matrix_ProteinCoding.gz", heatMapColor)
@@ -135,14 +148,14 @@ if __name__ == '__main__':
 
     #Antisense Forward
     for num,AnotationType in enumerate([AntisenseMINUS,AntisensePLUS]):
-        outFile_computeMatrix = produce_computeMatrix(outFileBW[num].split("_")[1],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
+        outFile_computeMatrix = produce_computeMatrix(Types[num],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
 
     rbindMatrix("matrix"+"_Forward_.gz","matrix"+"_Reverse_.gz","Final_Matrix_ProteinCoding.gz")
     produce_plotHeadmap("Antisense_FORWARD",basenameNoExtension, "Final_Matrix_ProteinCoding.gz", heatMapColor)
 
     #Antisense Reverse
     for num,AnotationType in enumerate([AntisensePLUS,AntisenseMINUS]):
-        outFile_computeMatrix = produce_computeMatrix(outFileBW[num].split("_")[1],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
+        outFile_computeMatrix = produce_computeMatrix(Types[num],referencePoint, bpbefore, bpafter, outFileBW[num], binSize, AnotationType)
 
     rbindMatrix("matrix"+"_Forward_.gz","matrix"+"_Reverse_.gz","Final_Matrix_ProteinCoding.gz")
     produce_plotHeadmap("Antisense_REVERSE",basenameNoExtension, "Final_Matrix_ProteinCoding.gz", heatMapColor)
