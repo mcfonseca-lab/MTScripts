@@ -10,6 +10,20 @@
 #SBATCH --mail-type=ALL
 #SBATCH --image=mcfonsecalab/htstools_plus:latest
 
-cd /home
+full_name1=$(readlink -f $1)
+cd /home/rluis/scratch
 
-srun python /home/rluis/MTScripts_DEV/deeptools_HeatMap_Stranded.py $1 --cpu 40 --zMax 2.2
+mkdir DT_HeatMap_ST_$SLURM_JOB_ID
+cd DT_HeatMap_ST_$SLURM_JOB_ID
+
+
+cp $full_name1 .
+
+file1=$(basename $1)
+
+srun shifter python /home/rluis/MTScripts_DEV/deeptools_HeatMap_Stranded.py $file1 --colorHeatMap $2 --cpu 40 --zMax 2.2 
+
+rm $file1
+mv * $SLURM_SUBMIT_DIR
+cd ..
+rmdir DT_HeatMap_ST_$SLURM_JOB_ID

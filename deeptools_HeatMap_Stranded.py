@@ -23,6 +23,7 @@ parser = argparse.ArgumentParser(description='Generate Stranded HeatMap.')
 parser.add_argument('bamFile', help='Base bamFIle to be reported in the HeatMap')
 parser.add_argument('--cpu', dest='NumberCpus', default=8 , help='Number of Cpus to use')
 parser.add_argument('--zMax', dest='zMax', default="", help='The Maximum z value to plotHeatMap deeptools function')
+parser.add_argument('--colorHeatMap', dest='colorHeatMap', default='Greys', help='Define the final Heatmap Color. Without any indication, Greys will be the defined color')
 args = parser.parse_args()
 
 ###
@@ -30,6 +31,7 @@ args = parser.parse_args()
 bamFile=args.bamFile
 basenameNoExtension = os.path.splitext(os.path.basename(bamFile))[0]
 NumberCpus=args.NumberCpus
+colorHeatMap=args.colorHeatMap
 if args.zMax != "":
     zMax="--zMax " + args.zMax
 else:
@@ -81,9 +83,9 @@ def produce_computeMatrix(Type,referencePoint,  bpbefore, bpafter, outFileBW, bi
 
 ###
 #plotHeatmap
-def produce_plotHeadmap(Type,basenameNoExtension,outFile_computeMatrix,heatMapColor,zMax=zMax):
+def produce_plotHeadmap(Type,basenameNoExtension,outFile_computeMatrix,heatMapColor,zMax=zMax,colorHeatMap=colorHeatMap):
     outFile_plotHeatmap = "HeatMap_"+basenameNoExtension+"_"+Type+"_.eps"
-    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps {} --zMin 0 ".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor,zMax).split()
+    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps {} --zMin 0 --colorMap {} ".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor,zMax,colorHeatMap).split()
     plotHeatmap.main(args_plotHeatMap)
 
 
