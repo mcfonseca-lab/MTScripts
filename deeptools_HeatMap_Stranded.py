@@ -83,7 +83,7 @@ def produce_computeMatrix(Type,referencePoint,  bpbefore, bpafter, outFileBW, bi
 #plotHeatmap
 def produce_plotHeadmap(Type,basenameNoExtension,outFile_computeMatrix,heatMapColor,zMax=zMax):
     outFile_plotHeatmap = "HeatMap_"+basenameNoExtension+"_"+Type+"_.eps"
-    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps {}".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor,zMax).split()
+    args_plotHeatMap="-m {} -out {} --colorMap {} --sortRegions keep --plotFileFormat eps {} --zMin 0 ".format(outFile_computeMatrix, outFile_plotHeatmap,heatMapColor,zMax).split()
     plotHeatmap.main(args_plotHeatMap)
 
 
