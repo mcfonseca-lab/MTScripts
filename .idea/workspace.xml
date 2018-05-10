@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d61d8a-3696-4c1a-aaf6-563e463d05f5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/deeptools_metaProfile_Stranded.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="deeptools_HeatMap_Stranded.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2232">
-              <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
+            <state relative-caret-position="2952">
+              <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
               <folding>
                 <element signature="e#588#597#0" expanded="true" />
               </folding>
@@ -30,32 +29,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="432">
-                <caret line="24" column="103" selection-start-line="24" selection-start-column="103" selection-end-line="24" selection-end-column="103" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="deeptools_HeatMap_Stranded.sbatch" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PolyA_plots_and_statistics.r" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PolyA_plots_and_statistics.r">
+      <file leaf-file-name="deeptools_metaProfile_Stranded.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/deeptools_metaProfile_Stranded.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret selection-end-line="6" selection-end-column="77" />
+              <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+              <folding>
+                <element signature="e#588#597#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,6 +68,12 @@
       <find>os.re</find>
       <find>directionBamFile</find>
       <find>--zMin</find>
+      <find>plotHeatmap</find>
+      <find>Heatmap</find>
+      <find>zMax</find>
+      <find>ymax</find>
+      <find>heat</find>
+      <find>black</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -104,14 +91,15 @@
         <option value="$PROJECT_DIR$/deeptools_MetaProfile_Stranded.py" />
         <option value="$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/deeptools_metaProfile_Stranded.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-15" />
-    <option name="y" value="-4" />
-    <option name="width" value="1299" />
-    <option name="height" value="764" />
+    <option name="x" value="-55" />
+    <option name="y" value="24" />
+    <option name="width" value="1297" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -153,7 +141,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.deeptools_metaProfile_Stranded">
     <configuration name="deeptools script" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MTScripts" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,8 +160,31 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="deeptools_metaProfile_Stranded" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="MTScripts" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/deeptools_metaProfile_Stranded.py" />
+      <option name="PARAMETERS" value="Sample.bam --cpu 4 --yMax 2.5" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.deeptools script" />
+      <item itemvalue="Python.deeptools_metaProfile_Stranded" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.deeptools_metaProfile_Stranded" />
         <item itemvalue="Python.deeptools script" />
       </list>
     </recent_temporary>
@@ -196,25 +207,33 @@
       <option name="project" value="LOCAL" />
       <updated>1525883519930</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update README.md and created Sbatch for deeptools HeatMaps">
+      <created>1525946798355</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1525946798357</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5003984" side_tool="true" weight="0.28705147" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4996016" weight="0.33853355" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.16848674" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.16848674" />
       <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4996016" visible="true" weight="0.33853355" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8273921" visible="true" weight="0.3131474" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8231132" visible="true" weight="0.18964143" />
       <window_info anchor="right" id="R Packages" order="3" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.1768868" side_tool="true" visible="true" weight="0.18964143" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
-      <window_info id="Favorites" order="2" sideWeight="0.17260788" side_tool="true" visible="true" weight="0.3131474" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -229,7 +248,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Deeptools HeatMaps Script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deeptools HeatMaps Script" />
+    <MESSAGE value="Update README.md and created Sbatch for deeptools HeatMaps" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README.md and created Sbatch for deeptools HeatMaps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -244,6 +264,74 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2448">
+          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
+          <folding>
+            <element signature="e#588#597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PolyA_plots_and_statistics.r">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="432">
+            <caret line="24" column="103" selection-start-line="24" selection-start-column="103" selection-end-line="24" selection-end-column="103" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2448">
+          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
+          <folding>
+            <element signature="e#588#597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PolyA_plots_and_statistics.r">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="432">
+            <caret line="24" column="103" selection-start-line="24" selection-start-column="103" selection-end-line="24" selection-end-column="103" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1908">
@@ -356,16 +444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2232">
-          <caret line="142" column="32" selection-start-line="142" selection-start-column="32" selection-end-line="142" selection-end-column="32" />
-          <folding>
-            <element signature="e#588#597#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Sbatch_Scripts/deeptools_HeatMap_Stranded.sbatch">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -376,10 +454,30 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="432">
+          <first_editor relative-caret-position="339">
             <caret line="24" column="103" selection-start-line="24" selection-start-column="103" selection-end-line="24" selection-end-column="103" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeptools_HeatMap_Stranded.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2952">
+          <caret line="164" column="17" selection-start-line="164" selection-start-column="17" selection-end-line="164" selection-end-column="17" />
+          <folding>
+            <element signature="e#588#597#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/deeptools_metaProfile_Stranded.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
+          <folding>
+            <element signature="e#588#597#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
