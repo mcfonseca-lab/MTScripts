@@ -1,11 +1,13 @@
 #!/usr/bin/python
-#############################################################################
-###                                                                       ###
-###   Antisense Project - 2018                                            ###
-###   Generate Stranded MetaProfile.                                      ###
-###   Author: Rui Luis (MCFonsecaLab)                                     ###
-###                                                                       ###
-#############################################################################
+###################################################################################
+###                                                                             ###
+###   Antisense Project - 2018                                                  ###
+###   Generate Stranded MetaProfile with two TSS (ProteinCoding and Antisense). ###
+###   Author: Rui Luis (MCFonsecaLab)                                           ###
+###                                                                             ###
+###################################################################################
+
+
 
 ###
 # Imported Packages
@@ -48,13 +50,11 @@ effectiveGenomeSize = 2913022398
 normalizeUsing = "BPM"
 
 # ComputeMatrix
-referencePoint = "TSS"
 bpbefore = 500
 bpafter = 500
-AntisensePLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS2_Isoforms_PLUS.bed'
-AntisenseMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS2_Isoforms_MINUS.bed'
-ProteinCodingMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_MINUS.bed'
-ProteinCodingPLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_PLUS.bed'
+
+TSS1_TSS2_PLUS = 'TSS1_TSS2_region_PLUS.bed'
+TSS1_TSS2_MINUS = 'TSS1_TSS2_region_MINUS.bed'
 
 
 # Define Arguments
@@ -70,10 +70,10 @@ def produce_bamCoverage(Type, bamFile, basenameNoExtension, NumberCpus, binSize,
 
 ###
 # bamCoverage
-def produce_computeMatrix(Type, referencePoint, bpbefore, bpafter, outFileBW, binSize, region):
+def produce_computeMatrix(Type, bpbefore, bpafter, outFileBW, binSize, region):
     outFile_computeMatrix = "matrix" + "_" + Type + "_.gz"
-    args_computeMatrix = 'reference-point --referencePoint {} -b {} -a {} -S {}  --binSize {} --outFileName {} -R {}'.format(
-        referencePoint, bpbefore, bpafter, outFileBW, binSize, outFile_computeMatrix, region).split()
+    args_computeMatrix = 'scale-regions -b {} -a {} -S {}  --binSize {} --outFileName {} -R {}'.format(
+        bpbefore, bpafter, outFileBW, binSize, outFile_computeMatrix, region).split()
     computeMatrix.main(args_computeMatrix)
     return outFile_computeMatrix
 
@@ -82,7 +82,7 @@ def produce_computeMatrix(Type, referencePoint, bpbefore, bpafter, outFileBW, bi
 # plotMetaProfile
 def produce_MetaProfile(Type, basenameNoExtension, outFile_computeMatrix, yMax=yMax):
     outFile_plotProfile = "MetaProfile_" + basenameNoExtension + "_" + Type + "_.eps"
-    args_plotMetaProfile = "-m {} -out {} --plotType lines --plotFileFormat eps {} --yMin 0 --samplesLabel '' --plotHeight 15 --plotWidth 25".format( outFile_computeMatrix, outFile_plotProfile, yMax).split()
+    args_plotMetaProfile = "-m {} -out {} --plotType lines --plotFileFormat eps {} --yMin 0 --samplesLabel '' --plotHeight 15 --plotWidth 25 --startLabel TSS1 --endLabel TSS2 ".format( outFile_computeMatrix, outFile_plotProfile, yMax).split()
     plotProfile.main(args_plotMetaProfile)
 
 
@@ -140,37 +140,21 @@ if __name__ == '__main__':
             produce_bamCoverage(Types[enum], directionBamFile + ".bam", basenameNoExtension, NumberCpus, binSize,
                                 blackListFileName, effectiveGenomeSize, normalizeUsing))
 
-    # ProteinCoding Forward
-    for num, AnotationType in enumerate([ProteinCodingMINUS, ProteinCodingPLUS]):
-        outFile_computeMatrix = produce_computeMatrix(Types[num], referencePoint, bpbefore, bpafter, outFileBW[num],
+    # Reads Forward
+    for num, AnotationType in enumerate([TSS1_TSS2_MINUS, TSS1_TSS2_PLUS]):
+        outFile_computeMatrix = produce_computeMatrix(Types[num], bpbefore, bpafter, outFileBW[num],
                                                       binSize, AnotationType)
 
     rbindMatrix("matrix" + "_Forward_.gz", "matrix" + "_Reverse_.gz", "Final_Matrix_ProteinCoding.gz")
-    produce_MetaProfile("ProteinCoding_FORWARD", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
+    produce_MetaProfile("TSS2_TSS1_FORWARD", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
 
-    # ProteinCoding Reverse
-    for num, AnotationType in enumerate([ProteinCodingPLUS, ProteinCodingMINUS]):
-        outFile_computeMatrix = produce_computeMatrix(Types[num], referencePoint, bpbefore, bpafter, outFileBW[num],
+    # Reads Reverse
+    for num, AnotationType in enumerate([TSS1_TSS2_PLUS, TSS1_TSS2_MINUS]):
+        outFile_computeMatrix = produce_computeMatrix(Types[num], bpbefore, bpafter, outFileBW[num],
                                                       binSize, AnotationType)
 
     rbindMatrix("matrix" + "_Forward_.gz", "matrix" + "_Reverse_.gz", "Final_Matrix_ProteinCoding.gz")
-    produce_MetaProfile("ProteinCoding_REVERSE", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
-
-    # Antisense Forward
-    for num, AnotationType in enumerate([AntisenseMINUS, AntisensePLUS]):
-        outFile_computeMatrix = produce_computeMatrix(Types[num], referencePoint, bpbefore, bpafter, outFileBW[num],
-                                                      binSize, AnotationType)
-
-    rbindMatrix("matrix" + "_Forward_.gz", "matrix" + "_Reverse_.gz", "Final_Matrix_ProteinCoding.gz")
-    produce_MetaProfile("Antisense_FORWARD", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
-
-    # Antisense Reverse
-    for num, AnotationType in enumerate([AntisensePLUS, AntisenseMINUS]):
-        outFile_computeMatrix = produce_computeMatrix(Types[num], referencePoint, bpbefore, bpafter, outFileBW[num],
-                                                      binSize, AnotationType)
-
-    rbindMatrix("matrix" + "_Forward_.gz", "matrix" + "_Reverse_.gz", "Final_Matrix_ProteinCoding.gz")
-    produce_MetaProfile("Antisense_REVERSE", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
+    produce_MetaProfile("TSS2_TSS1_REVERSE", basenameNoExtension, "Final_Matrix_ProteinCoding.gz")
 
     # Remove Files
     os.remove(basenameNoExtension + "_Reverse.bam")
