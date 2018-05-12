@@ -53,8 +53,8 @@ normalizeUsing = "BPM"
 bpbefore = 500
 bpafter = 500
 
-TSS1_TSS2_PLUS = 'TSS1_TSS2_region_PLUS.bed'
-TSS1_TSS2_MINUS = 'TSS1_TSS2_region_MINUS.bed'
+TSS1_TSS2_PLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS1_TSS2_region_PLUS.bed'
+TSS1_TSS2_MINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/TSS1_TSS2_region_MINUS.bed'
 
 
 # Define Arguments
@@ -82,7 +82,7 @@ def produce_computeMatrix(Type, bpbefore, bpafter, outFileBW, binSize, region):
 # plotMetaProfile
 def produce_MetaProfile(Type, basenameNoExtension, outFile_computeMatrix, yMax=yMax):
     outFile_plotProfile = "MetaProfile_" + basenameNoExtension + "_" + Type + "_.eps"
-    args_plotMetaProfile = "-m {} -out {} --plotType lines --plotFileFormat eps {} --yMin 0 --samplesLabel '' --plotHeight 15 --plotWidth 25 --startLabel TSS1 --endLabel TSS2 ".format( outFile_computeMatrix, outFile_plotProfile, yMax).split()
+    args_plotMetaProfile = "-m {} -out {} --plotType se --plotFileFormat eps {} --yMin 0 --samplesLabel '' --plotHeight 15 --plotWidth 25 --startLabel TSS1 --endLabel TSS2 ".format( outFile_computeMatrix, outFile_plotProfile, yMax).split()
     plotProfile.main(args_plotMetaProfile)
 
 
