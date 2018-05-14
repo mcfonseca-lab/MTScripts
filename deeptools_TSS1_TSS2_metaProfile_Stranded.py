@@ -90,7 +90,7 @@ def produce_MetaProfile(Type, basenameNoExtension, outFile_computeMatrix, yMax=y
 # Samtools
 
 # Samtools Inputs
-StrandnessType = "fr-secondstrand"  # fr-secondstrand or fr-firstrand
+StrandnessType = "fr-firstrand"  # fr-secondstrand or fr-firstrand
 
 
 def filter_by_flag(bamFile, Flag):
@@ -115,8 +115,10 @@ def merge_bamFiles(basenameNoExtension):
 
 
 def createBAMIndex(basenameNoExtension):
-    pysam.index(basenameNoExtension + "_Reverse.bam")
-    pysam.index(basenameNoExtension + "_Forward.bam")
+    args_index_Reverse = "samtools index {}_Reverse.bam".format(basenameNoExtension).split()
+    subprocess.call(args_index_Reverse)
+    args_index_Forward = "samtools index {}_Forward.bam".format(basenameNoExtension).split()
+    subprocess.call(args_index_Forward)
 
 
 def rbindMatrix(matrix1, matrix2, outputName):

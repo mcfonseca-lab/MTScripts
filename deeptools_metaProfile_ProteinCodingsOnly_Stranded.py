@@ -53,8 +53,8 @@ referencePoint = "TSS"
 bpbefore = 500
 bpafter = 500
 
-ProteinCodingMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_MINUS.bed'
-ProteinCodingPLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/ProteinCodingIsoforms_PLUS.bed'
+ProteinCodingMINUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/Genes_Without_NAT/ProteinCoding_Not_Overlapping_GENES_ID_without_OVERLAPPING_ANTISENSE_without_OVERLAPPING_SNO_MIR_EXPRESSED_MINUS.bed'
+ProteinCodingPLUS = '/home/rluis/Rui-testing/0nly_Annoted_APPROACH/Human/Hela/Metagenes/Genes_Without_NAT/ProteinCoding_Not_Overlapping_GENES_ID_without_OVERLAPPING_ANTISENSE_without_OVERLAPPING_SNO_MIR_EXPRESSED_PLUS.bed'
 
 
 # Define Arguments
@@ -115,8 +115,10 @@ def merge_bamFiles(basenameNoExtension):
 
 
 def createBAMIndex(basenameNoExtension):
-    pysam.index(basenameNoExtension + "_Reverse.bam")
-    pysam.index(basenameNoExtension + "_Forward.bam")
+    args_index_Reverse = "samtools index {}_Reverse.bam".format(basenameNoExtension).split()
+    subprocess.call(args_index_Reverse)
+    args_index_Forward = "samtools index {}_Forward.bam".format(basenameNoExtension).split()
+    subprocess.call(args_index_Forward)
 
 
 def rbindMatrix(matrix1, matrix2, outputName):
