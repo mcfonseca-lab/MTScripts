@@ -19,15 +19,12 @@
 #Import Packages
 import subprocess
 import argparse
-import pysam
-import tempfile
 import os
 import pysam
-import pybedtools
 import random
 import string
 import numpy as np
-from copy import deepcopy
+
 
 #Input Arguments
 parser = argparse.ArgumentParser(description='PeakCalling mNET-Seq')
