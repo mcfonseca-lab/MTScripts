@@ -8,13 +8,9 @@
 #############################################################################
 
 #Import Packages
-
 import argparse
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy.stats import norm
-import matplotlib.mlab as mlab
-import scipy.stats as stats
 
 #Input Arguments
 parser = argparse.ArgumentParser(description='DensityPlot mNET-Seq')
@@ -43,7 +39,9 @@ for replicate in args.PeakCallingFiles:
 globalDT.sort_values(["Nline"],inplace=True)
 
 plt.figure(1)
-counts = globalDT.groupby("Nline").filter(lambda x: len(x) == 4).drop_duplicates(subset=["chr","start","end","FeatureID",
+plt.title('Conserved peaks between replicates per Feature')
+plt.xlabel("Distance From TSS")
+counts = globalDT.groupby("Nline").filter(lambda x: len(x) == len(args.PeakCallingFiles)).drop_duplicates(subset=["chr","start","end","FeatureID",
                                                                         "Nline","Strand","DistFromTSS",
                                                                         "FeatureSize","Extrainfo"])
 counts.sort_values(["Nline"],inplace=True)
@@ -56,38 +54,46 @@ except:
     pass
 
 plt.figure(2)
+plt.title('All peaks per Feature')
+plt.xlabel("Distance From TSS")
+
 globalDT["DistFromTSS"].str.strip("DistFromTSS=").astype('int64').where(globalDT["DistFromTSS"].str.strip("DistFromTSS=").astype('int64') <= 1000)\
     .plot.hist(stacked=True, alpha=0.5, bins=200, xlim=[0,1000])
-#plt.show(2)
+plt.show(2)
 
 plt.figure(3)
+plt.title('All peaks per Feature')
+plt.xlabel("Distance From TSS")
 
+globalDT["DistFromTSS"].str.strip("DistFromTSS=").astype('int64').where(globalDT["DistFromTSS"].str.strip("DistFromTSS=").astype('int64') <= 200)\
+    .plot.hist(stacked=True, alpha=0.5, bins=75, xlim=[0,200])
+plt.show(3)
 
-#globalDT = globalDT.loc[(globalDT["DistFromTSS"] <= 1000)]
+########################################################
+## Highest peak per Gene
+plt.figure(4)
+plt.title('Highest peak per Feature')
+plt.xlabel("Distance From TSS")
 
-#DstTSS = globalDT[globalDT.groupby(by=['FeatureID'],sort=True)['Coverage'].transform(max) == globalDT['Coverage']].drop_duplicates(keep='last')['DistFromTSS']
-
-
-#CoverageDataMAX = globalDT.groupby(by=['FeatureID']).head()#.max() #.plot.hist(  alpha=0.5, bins=200, xlim=[0,200])
 globalDT["DistFromTSS"] = globalDT["DistFromTSS"].str.strip("DistFromTSS=")
 globalDT["DistFromTSS"] = globalDT["DistFromTSS"].astype('int64')
 globalDT =  globalDT.reset_index(drop=True)
 
 CoverageDataMAX = globalDT.loc[globalDT.reset_index().groupby(['FeatureID'])['Coverage'].idxmax()]
-print globalDT.reset_index().groupby(['FeatureID'])['Coverage'].head()
-CoverageDataMAX['DistFromTSS'].plot.hist(stacked=True, alpha=0.5, bins=3000, xlim=[0,1200])
+CoverageDataMAX = CoverageDataMAX[CoverageDataMAX['DistFromTSS'] < 1200]
+CoverageDataMAX['DistFromTSS'].plot.hist(stacked=True, alpha=0.5, bins=200, xlim=[0,1200])
+
 
 print "0-200: {} %".format(str(sum((CoverageDataMAX['DistFromTSS'] < 200) & (CoverageDataMAX['DistFromTSS'] > 0))/65.00))
 print "200-850: {} %".format(str(sum((CoverageDataMAX['DistFromTSS'] < 850) & (CoverageDataMAX['DistFromTSS'] > 200))/65.00))
 print "850-1200: {} %".format(str(sum((CoverageDataMAX['DistFromTSS'] < 1200) & (CoverageDataMAX['DistFromTSS'] > 850))/65.00))
 print "1200-inf: {} %".format(str(sum(CoverageDataMAX['DistFromTSS'] > 1200)/65.00))
 
-plt.show(3)
+plt.show(4)
 
-CoverageDataMAX = globalDT.drop_duplicates(["chr","start","end","FeatureID","Nline","Strand","DistFromTSS","FeatureSize","Extrainfo"]).groupby(by=['FeatureID']).nth(-1)
-
-exit()
-CoverageDataMAX = CoverageDataMAX["DistFromTSS"].str.strip("DistFromTSS=").astype('int64')
-
-CoverageDataMAX.plot.hist(stacked=True, alpha=0.5, bins=3000, xlim=[0,1200])
-
+plt.figure(5)
+plt.title('Highest peak per Feature')
+plt.xlabel("Distance From TSS")
+CoverageDataMAX = CoverageDataMAX[CoverageDataMAX['DistFromTSS'] < 200]
+CoverageDataMAX['DistFromTSS'].plot.hist(stacked=True, alpha=0.5, bins=75, xlim=[0,200])
+plt.show(5)

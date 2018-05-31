@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d61d8a-3696-4c1a-aaf6-563e463d05f5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/PeakCaller_mNET-Seq.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mNET-seq-DensityPlots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mNET-seq-DensityPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/mNET-seq-DensityPlots.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,23 +17,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PeakCaller_mNET-Seq.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PeakCaller_mNET-Seq.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PeakCaller_mNET-Seq.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2178">
-              <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+            <state relative-caret-position="234">
+              <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+              <folding>
+                <element signature="e#971#988#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mNET-seq-DensityPlots.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mNET-seq-DensityPlots.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mNET-seq-DensityPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1368">
-              <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
-              <folding>
-                <element signature="e#583#598#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1620">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
             </state>
           </provider>
         </entry>
@@ -132,10 +131,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="42" />
+    <option name="x" value="420" />
     <option name="y" value="-4" />
-    <option name="width" value="1283" />
-    <option name="height" value="644" />
+    <option name="width" value="1279" />
+    <option name="height" value="628" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -258,7 +257,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mNET-seq-DensityPlots.py" />
-      <option name="PARAMETERS" value="Y1Prep1 Y1Prep1.1 Y1Prep2 Y1Prep3" />
+      <option name="PARAMETERS" value="Y1Prep2 Y1Prep3 Y1Prep1.1 Y1Prep1" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -326,25 +325,40 @@
       <option name="project" value="LOCAL" />
       <updated>1526134918725</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="PeakCalling mNET-Seq scripts">
+      <created>1527239305804</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1527239305804</updated>
+    </task>
+    <task id="LOCAL-00007" summary="PeakCalling mNET-Seq scripts (Small Updates)">
+      <created>1527240164085</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1527240164085</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5011952" side_tool="true" weight="0.28081122" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49880478" weight="0.4149766" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.16848674" />
       <window_info anchor="bottom" id="Python Console" order="8" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49880478" weight="0.4149766" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.5101404" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7784711" weight="0.24143426" />
       <window_info anchor="right" id="R Packages" order="3" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32988048" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" sideWeight="0.22152886" side_tool="true" weight="0.24143426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
+      <window_info id="Favorites" order="2" sideWeight="0.22152886" side_tool="true" weight="0.24143426" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -354,26 +368,26 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.16848674" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49880478" weight="0.30109206" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7784711" visible="true" weight="0.24143426" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="R Graphics" order="4" weight="0.32988048" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="R Packages" order="3" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5011952" side_tool="true" weight="0.28081122" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.16848674" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" sideWeight="0.22152886" side_tool="true" visible="true" weight="0.24143426" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Python Console" order="8" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -385,7 +399,9 @@
     <MESSAGE value="Created deeptools_metaProfile_Stranded.py" />
     <MESSAGE value="Created deeptools_TSS1_TSS2_metaProfile_Stranded.py" />
     <MESSAGE value="Created deeptools_ProteinCodingsOnly_Stranded.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created deeptools_ProteinCodingsOnly_Stranded.py" />
+    <MESSAGE value="PeakCalling mNET-Seq scripts" />
+    <MESSAGE value="PeakCalling mNET-Seq scripts (Small Updates)" />
+    <option name="LAST_COMMIT_MESSAGE" value="PeakCalling mNET-Seq scripts (Small Updates)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,20 +735,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mNET-seq-DensityPlots.py">
+    <entry file="file://$PROJECT_DIR$/PeakCaller_mNET-Seq.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="76" column="29" selection-start-line="76" selection-start-column="29" selection-end-line="76" selection-end-column="29" />
+        <state relative-caret-position="234">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
           <folding>
-            <element signature="e#583#598#0" expanded="true" />
+            <element signature="e#971#988#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PeakCaller_mNET-Seq.py">
+    <entry file="file://$PROJECT_DIR$/mNET-seq-DensityPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2178">
-          <caret line="33" column="21" lean-forward="true" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        <state relative-caret-position="1620">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
