@@ -35,8 +35,8 @@ basenameBamFile=$(basename $bamFile)
 
 srun shifter python /home/rluis/MTScripts_DEV/PeakCaller_mNET-Seq.py $basenameBedFile $basenameBamFile --outNameFile $3
 
-rm $bedFile
-rm $bamFile
+rm $basenameBedFile
+rm $basenameBamFile
 
 mv * $SLURM_SUBMIT_DIR
 cd ..

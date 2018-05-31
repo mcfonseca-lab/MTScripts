@@ -21,8 +21,7 @@ cp $full_name1 .
 
 file1=$(basename $1)
 
-srun shifter python /home/rluis/MTScripts_DEV/deeptools_TSS1_TSS2_metaProfile_Stranded.py $file1 --cpu 40 #--yMax 1.5
-
+srun shifter python /home/rluis/MTScripts_DEV/deeptools_TSS1_TSS2_metaProfile_Stranded.py $file1 --cpu 40 --yMax 20
 rm $file1
 mv * $SLURM_SUBMIT_DIR
 cd ..

@@ -47,7 +47,8 @@ else:
 binSize = 10
 blackListFileName = os.path.dirname(os.path.realpath(__file__)) + "/Blacklist_hg38.bed"
 effectiveGenomeSize = 2913022398
-normalizeUsing = "BPM"
+#normalizeUsing = "BPM"
+normalizeUsing = "RPKM"
 
 # ComputeMatrix
 bpbefore = 500
