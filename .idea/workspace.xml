@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03d61d8a-3696-4c1a-aaf6-563e463d05f5" name="Default" comment="">
+    <list default="true" id="03d61d8a-3696-4c1a-aaf6-563e463d05f5" name="Default" comment="PeakCalling mNET-Seq Density Plots (Small Updates)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mNET-seq-DensityPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/mNET-seq-DensityPlots.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,8 +31,8 @@
       <file leaf-file-name="mNET-seq-DensityPlots.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mNET-seq-DensityPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1620">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="198">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -339,17 +338,23 @@
       <option name="project" value="LOCAL" />
       <updated>1527240164085</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="PeakCalling mNET-Seq Density Plots (Small Updates)">
+      <created>1527776570353</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1527776570353</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5011952" side_tool="true" weight="0.28081122" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49880478" weight="0.4149766" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.16848674" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="7" visible="true" weight="0.30421218" />
       <window_info anchor="bottom" id="Python Console" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.5101404" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7784711" weight="0.24143426" />
@@ -401,10 +406,18 @@
     <MESSAGE value="Created deeptools_ProteinCodingsOnly_Stranded.py" />
     <MESSAGE value="PeakCalling mNET-Seq scripts" />
     <MESSAGE value="PeakCalling mNET-Seq scripts (Small Updates)" />
-    <option name="LAST_COMMIT_MESSAGE" value="PeakCalling mNET-Seq scripts (Small Updates)" />
+    <MESSAGE value="PeakCalling mNET-Seq Density Plots (Small Updates)" />
+    <option name="LAST_COMMIT_MESSAGE" value="PeakCalling mNET-Seq Density Plots (Small Updates)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/mNET-seq-DensityPlots.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -412,7 +425,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -747,8 +760,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mNET-seq-DensityPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1620">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="198">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
